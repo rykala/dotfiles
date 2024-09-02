@@ -15,11 +15,14 @@ plugins=(
     zsh-autosuggestions
     zsh-syntax-highlighting
 )
+
+# dump OMZ files to cache
+export ZSH_COMPDUMP=$ZSH/cache/.zcompdump-$HOST
 export ZSH="/Users/rykala/.oh-my-zsh"
 source $ZSH/oh-my-zsh.sh
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
-[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+#[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
 # Set up fzf key bindings and fuzzy completion
 source <(fzf --zsh)
@@ -83,3 +86,7 @@ alias tree=lt
 
 # Zoxide
 eval "$(zoxide init --cmd cd zsh)"
+
+# Starship
+export STARSHIP_CONFIG="$HOME/.starship.toml"
+eval "$(starship init zsh)"
