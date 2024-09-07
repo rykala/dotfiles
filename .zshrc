@@ -30,8 +30,11 @@ source <(fzf --zsh)
 # Allows to use ctrl+c/z/d
 bindkey -e
 
+# Thrash
+alias rm=trash
+
 # Custom aliases
-alias pn="pnpm"
+alias pn=pnpm
 alias zshconfig="vim ~/.zshrc"
 
 ## k8s
@@ -57,7 +60,7 @@ path+=("$HOME/.volta/bin")
 path+=("/opt/homebrew/opt/libpq/bin")
 
 # Eza 
-alias ls='eza -F -gh --group-directories-first --git --git-ignore --icons=always --color-scale all --hyperlink'
+alias ls='eza -F -gh --group-directories-first --git-ignore --icons=always --color-scale all --hyperlink'
 alias lh='ls -d .*'
 alias lD='ls -D'
 alias lc='ls -1'
