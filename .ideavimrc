@@ -2,23 +2,46 @@
 " source ~/.vimrc
 
 let mapleader=" "
-
-""" Plugins  --------------------------------
-set multiple-cursors
-set commentary
-set argtextobj
-set textobj-entire
-set ReplaceWithRegister
-set exchange
 set relativenumber
 
-" Trying the new syntax
-Plug 'machakann/vim-highlightedyank'
-Plug 'preservim/nerdtree'
-Plug 'tpope/vim-surround'
+" Plugins  --------------------------------
+Plug "chrisbra/matchit"
+Plug "dbakker/vim-paragraph-motion"
+Plug "kana/vim-textobj-entire"
+Plug "machakann/vim-highlightedyank"
+Plug "michaeljsmith/vim-indent-object"
+Plug "preservim/nerdtree"
+Plug "terryma/vim-multiple-cursors"
+Plug "tommcdo/vim-exchange"
+Plug "tpope/vim-commentary"
+Plug "tpope/vim-surround"
+Plug "vim-scripts/argtextobj.vim"
 
-""" Plugin settings -------------------------
-let g:argtextobj_pairs="[:],(:),<:>"
+" Quickscope ------------------------------
+set quickscope
+let g:qs_highlight_on_keys = ['f', 'F', 't', 'T']
+
+" Matchit ---------------------------------
+" Remap multiple-cursors shortcuts to match terryma/vim-multiple-cursors
+nmap <C-n> <Plug>NextWholeOccurrence
+xmap <C-n> <Plug>NextWholeOccurrence
+nmap g<C-n> <Plug>NextOccurrence
+xmap g<C-n> <Plug>NextOccurrence
+xmap <C-x> <Plug>SkipOccurrence
+xmap <C-p> <Plug>RemoveOccurrence
+
+" Note that the default <A-n> and g<A-n> shortcuts don't work on Mac due to dead keys.
+" <A-n> is used to enter accented text e.g. ñ
+" Feel free to pick your own mappings that are not affected. I like to use <leader>
+nmap <leader><C-n> <Plug>AllWholeOccurrences
+xmap <leader><C-n> <Plug>AllWholeOccurrences
+nmap <leader>g<C-n> <Plug>AllOccurrences
+xmap <leader>g<C-n> <Plug>AllOccurrences
+
+" Text objects ----------------------------
+let g:argtextobj_pairs="[:],(:),{:},<:>"
+
+" NERDTree --------------------------------
 let g:NERDTreeMapActivateNode='l'
 let g:NERDTreeMapJumpParent='h'
 
@@ -26,29 +49,31 @@ let g:NERDTreeMapJumpParent='h'
 " but we should finally support vim-visual-multi because vim-multiple-cursors is deprecated now
 map <C-n> <Plug>NextWholeOccurrence
 
-""" Common settings -------------------------
+" Common settings -------------------------
 set showmode
 set so=5
 set incsearch
 set nu
 
-""" Idea specific settings ------------------
+" Idea specific settings ------------------
 set ideajoin
 set ideastatusicon=gray
 
-""" My Mappings -----------------------------
+" My Mappings -----------------------------
+map \ <Action>(flash.search)
+
 map <leader>d <Action>(Debug)
 map <leader>r <Action>(RenameElement)
 map <leader>c <Action>(Stop)
 map <leader>z <Action>(ToggleDistractionFreeMode)
 
-map <leader>s <Action>(SelectInProjectView)
+map <leader>ef <Action>(SelectInProjectView)
 map <leader>a <Action>(Annotate)
 map <leader>h <Action>(Vcs.ShowTabbedFileHistory)
-map <S-Space> <Action>(GotoNextError)
-
-" Reformat the current line only
-map <leader>l V<Action>(ReformatCode)
+map ]d <Action>(GotoNextError)
+map [d <Action>(GotoPreviousError)
+map ]c <Action>(GotoNextChange)
+map [c <Action>(GotoPreviousChange)
 
 map <leader>b <Action>(ToggleLineBreakpoint)
 map <leader>o <Action>(FileStructurePopup)
