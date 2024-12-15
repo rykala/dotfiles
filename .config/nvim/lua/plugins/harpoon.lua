@@ -15,6 +15,7 @@ return {
 		keymap.set("n", "<leader>2", function() harpoon:list():select(2) end)
 		keymap.set("n", "<leader>3", function() harpoon:list():select(3) end)
 		keymap.set("n", "<leader>4", function() harpoon:list():select(4) end)
+		keymap.set("n", "<leader>5", function() harpoon:list():select(5) end)
 		keymap.set("n", "<C-S-J>", function() harpoon:list():prev() end)
 		keymap.set("n", "<C-S-K>", function() harpoon:list():next() end)
 		-- stylua: ignore end

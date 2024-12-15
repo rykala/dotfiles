@@ -4,6 +4,7 @@ return {
 	dependencies = {
 		"hrsh7th/nvim-cmp",
 	},
+	enabled = false,
 	config = function()
 		local autopairs = require("nvim-autopairs")
 		autopairs.setup({

@@ -60,7 +60,7 @@ set ideajoin
 set ideastatusicon=gray
 
 " My Mappings -----------------------------
-map \ <Action>(flash.search)
+map s <Action>(flash.search)
 
 map <leader>d <Action>(Debug)
 map <leader>r <Action>(RenameElement)
@@ -68,12 +68,13 @@ map <leader>c <Action>(Stop)
 map <leader>z <Action>(ToggleDistractionFreeMode)
 
 map <leader>ef <Action>(SelectInProjectView)
-map <leader>a <Action>(Annotate)
-map <leader>h <Action>(Vcs.ShowTabbedFileHistory)
+map <leader>tb <Action>(Annotate)
+map <leader>th <Action>(Vcs.ShowTabbedFileHistory)
+map <leader>hr <Action>(Vcs.Rollback)
 map ]d <Action>(GotoNextError)
 map [d <Action>(GotoPreviousError)
-map ]c <Action>(GotoNextChange)
-map [c <Action>(GotoPreviousChange)
+nmap ]c <Action>(VcsShowNextChangeMarker)
+nmap [c <Action>(VcsShowPrevChangeMarker)
 
 map <leader>b <Action>(ToggleLineBreakpoint)
 map <leader>o <Action>(FileStructurePopup)
@@ -93,3 +94,17 @@ map U <C-R>
 
 """ Which-key ------------------------------
 set which-key
+
+" Harpooner  ------------------------------
+nmap <leader>1 <action>(HarpoonerOpenFile0)
+nmap <leader>2 <action>(HarpoonerOpenFile1)
+nmap <leader>3 <action>(HarpoonerOpenFile2)
+nmap <leader>4 <action>(HarpoonerOpenFile3)
+nmap <leader>5 <action>(HarpoonerOpenFile3)
+nmap <leader>6 <action>(HarpoonerOpenFile3)
+
+nmap <leader>hm <action>(HarpoonerQuickMenu)
+nmap <leader>ha <action>(HarpoonerAddFile)
+
+nmap <leader>hn <action>(HarpoonerNextFileAction)
+nmap <leader>hp <action>(HarpoonerPreviousFileAction)

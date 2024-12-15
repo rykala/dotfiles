@@ -93,3 +93,11 @@ eval "$(zoxide init --cmd cd zsh)"
 # Starship
 export STARSHIP_CONFIG="$HOME/.starship.toml"
 eval "$(starship init zsh)"
+
+# pnpm
+export PNPM_HOME="/Users/rykala/Library/pnpm"
+case ":$PATH:" in
+  *":$PNPM_HOME:"*) ;;
+  *) export PATH="$PNPM_HOME:$PATH" ;;
+esac
+# pnpm end
