@@ -17,10 +17,34 @@ vim.opt.rtp:prepend(lazypath)
 require("lazy").setup({
 	spec = {
 		-- add LazyVim and import its plugins
-		{ "LazyVim/LazyVim" },
+		{ "LazyVim/LazyVim", import = "lazyvim.plugins" },
+		-- Lazyvim extras
+		{ import = "lazyvim.plugins.extras.ai.copilot" },
+		{ import = "lazyvim.plugins.extras.formatting.prettier" },
+		{ import = "lazyvim.plugins.extras.lang.docker" },
+		{ import = "lazyvim.plugins.extras.lang.git" },
+		{ import = "lazyvim.plugins.extras.lang.json" },
+		{ import = "lazyvim.plugins.extras.lang.markdown" },
+		{ import = "lazyvim.plugins.extras.lang.tailwind" },
+		{ import = "lazyvim.plugins.extras.lang.typescript" },
+		{ import = "lazyvim.plugins.extras.lang.yaml" },
+		{ import = "lazyvim.plugins.extras.linting.eslint" },
+		{
+			import = "lazyvim.plugins.extras.test.core",
+			opts = { adapters = { ["neotest-vitest"] = {} } },
+		},
+		{ import = "lazyvim.plugins.extras.dap.core" },
 		-- import/override with your plugins
 		{ import = "plugins" },
-		{ import = "plugins.lsp" },
+		{ "marilari88/neotest-vitest" },
+		{
+			"neovim/nvim-lspconfig",
+			opts = function()
+				local keys = require("lazyvim.plugins.lsp.keymaps").get()
+				-- disable vim.lsp.buf.signature_help(
+				keys[#keys + 1] = { "<c-k>", false, mode = "i" }
+			end,
+		},
 	},
 	defaults = {
 		-- By default, only LazyVim plugins will be lazy-loaded. Your custom plugins will load during startup.
@@ -31,14 +55,15 @@ require("lazy").setup({
 		version = false, -- always use the latest git commit
 		-- version = "*", -- try installing the latest stable version for plugins that support semver
 	},
-	install = {
-		colorscheme = { "catppuccin" },
-	},
 	checker = {
 		enabled = true, -- check for plugin updates periodically
 		notify = false, -- notify on update
 	}, -- automatically check for plugin updates
 	performance = {
+		cache = {
+			enabled = true,
+			-- disable_events = {},
+		},
 		rtp = {
 			-- disable some rtp plugins
 			disabled_plugins = {

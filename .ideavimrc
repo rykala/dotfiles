@@ -103,8 +103,8 @@ nmap <leader>4 <action>(HarpoonerOpenFile3)
 nmap <leader>5 <action>(HarpoonerOpenFile3)
 nmap <leader>6 <action>(HarpoonerOpenFile3)
 
-nmap <leader>hm <action>(HarpoonerQuickMenu)
-nmap <leader>ha <action>(HarpoonerAddFile)
+nmap <C-e> <action>(HarpoonerQuickMenu)
+nmap <leader>a <action>(HarpoonerAddFile)
 
 nmap <leader>hn <action>(HarpoonerNextFileAction)
 nmap <leader>hp <action>(HarpoonerPreviousFileAction)

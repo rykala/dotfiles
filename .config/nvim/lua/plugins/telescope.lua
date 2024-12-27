@@ -1,51 +1,188 @@
 return {
 	"nvim-telescope/telescope.nvim",
 	branch = "0.1.x",
+	enabled = false,
 	dependencies = {
-		"nvim-lua/plenary.nvim",
-		{ "nvim-telescope/telescope-fzf-native.nvim", build = "make" },
 		"nvim-tree/nvim-web-devicons",
+		{
+			"nvim-telescope/telescope-fzf-native.nvim",
+			build = "make",
+		},
+		-- "nvim-telescope/telescope-file-browser.nvim",
 	},
-	config = function()
+	keys = {
+		{
+			"<leader>fP",
+			function()
+				require("telescope.builtin").find_files({
+					cwd = require("lazy.core.config").options.root,
+				})
+			end,
+			desc = "Find Plugin File",
+		},
+		{
+			"<C-p>",
+			function()
+				local builtin = require("telescope.builtin")
+				builtin.find_files({
+					no_ignore = false,
+					hidden = true,
+				})
+			end,
+			desc = "Lists files in your current working directory, respects .gitignore",
+		},
+		{
+			";f",
+			function()
+				local builtin = require("telescope.builtin")
+				builtin.find_files({
+					no_ignore = false,
+					hidden = true,
+				})
+			end,
+			desc = "Lists files in your current working directory, respects .gitignore",
+		},
+		{
+			";r",
+			function()
+				local builtin = require("telescope.builtin")
+				builtin.live_grep({
+					additional_args = { "--hidden" },
+				})
+			end,
+			desc = "Search for a string in your current working directory and get results live as you type, respects .gitignore",
+		},
+		{
+			"\\\\",
+			function()
+				local builtin = require("telescope.builtin")
+				builtin.buffers()
+			end,
+			desc = "Lists open buffers",
+		},
+		{
+			";t",
+			function()
+				local builtin = require("telescope.builtin")
+				builtin.help_tags()
+			end,
+			desc = "Lists available help tags and opens a new window with the relevant help info on <cr>",
+		},
+		{
+			";;",
+			function()
+				local builtin = require("telescope.builtin")
+				builtin.resume()
+			end,
+			desc = "Resume the previous telescope picker",
+		},
+		{
+			";e",
+			function()
+				local builtin = require("telescope.builtin")
+				builtin.diagnostics()
+			end,
+			desc = "Lists Diagnostics for all open buffers or a specific buffer",
+		},
+		{
+			";o",
+			function()
+				local builtin = require("telescope.builtin")
+				builtin.treesitter()
+			end,
+			desc = "Lists Function names, variables, from Treesitter",
+		},
+		-- {
+		-- 	";sf",
+		-- 	function()
+		-- 		local telescope = require("telescope")
+		--
+		-- 		local function telescope_buffer_dir()
+		-- 			return vim.fn.expand("%:p:h")
+		-- 		end
+		--
+		-- 		telescope.extensions.file_browser.file_browser({
+		-- 			path = "%:p:h",
+		-- 			cwd = telescope_buffer_dir(),
+		-- 			respect_gitignore = false,
+		-- 			hidden = true,
+		-- 			grouped = true,
+		-- 			previewer = false,
+		-- 			initial_mode = "normal",
+		-- 			layout_config = { height = 40 },
+		-- 		})
+		-- 	end,
+		-- 	desc = "Open File Browser with the path of the current buffer",
+		-- },
+	},
+	config = function(_, opts)
 		local telescope = require("telescope")
 		local actions = require("telescope.actions")
+		-- local fb_actions = require("telescope").extensions.file_browser.actions
 
-		telescope.setup({
-			defaults = {
-				path_display = { "smart" },
-				sorting_strategy = "ascending",
-				layout_config = {
-					horizontal = {
-						prompt_position = "top",
-						preview_width = 0.6,
-					},
+		opts.defaults = vim.tbl_deep_extend("force", opts.defaults, {
+			layout_config = { prompt_position = "top", preview_width = 0.6 },
+			layout_strategy = "horizontal",
+			mappings = {
+				i = {
+					["<C-k>"] = actions.move_selection_previous, -- move to prev result
+					["<C-j>"] = actions.move_selection_next, -- move to next result
+					["<C-q>"] = actions.smart_send_to_qflist + actions.open_qflist,
+					["<C-c>"] = actions.close,
 				},
-				mappings = {
-					i = {
-						["<C-k>"] = actions.move_selection_previous, -- move to prev result
-						["<C-j>"] = actions.move_selection_next, -- move to next result
-						["<C-q>"] = actions.smart_send_to_qflist + actions.open_qflist,
-						["<C-c>"] = actions.close,
-					},
-					n = {
-						["<C-c>"] = actions.close,
-					},
+				n = {
+					["<C-c>"] = actions.close,
 				},
 			},
+			sorting_strategy = "ascending",
+			winblend = 0,
+			wrap_results = true,
+			path_display = { "smart" },
 		})
+		opts.pickers = {
+			diagnostics = {
+				theme = "ivy",
+				initial_mode = "normal",
+				layout_config = {
+					preview_cutoff = 9999,
+				},
+			},
+		}
+		-- opts.extensions = {
+		-- 	file_browser = {
+		-- 		theme = "dropdown",
+		-- 		-- disables netrw and use telescope-file-browser in its place
+		-- 		hijack_netrw = true,
+		-- 		mappings = {
+		-- 			-- your custom insert mode mappings
+		-- 			["n"] = {
+		-- 				-- your custom normal mode mappings
+		-- 				["N"] = fb_actions.create,
+		-- 				["h"] = fb_actions.goto_parent_dir,
+		-- 				["/"] = function()
+		-- 					vim.cmd("startinsert")
+		-- 				end,
+		-- 				["<C-u>"] = function(prompt_bufnr)
+		-- 					for i = 1, 10 do
+		-- 						actions.move_selection_previous(prompt_bufnr)
+		-- 					end
+		-- 				end,
+		-- 				["<C-d>"] = function(prompt_bufnr)
+		-- 					for i = 1, 10 do
+		-- 						actions.move_selection_next(prompt_bufnr)
+		-- 					end
+		-- 				end,
+		-- 				["<PageUp>"] = actions.preview_scrolling_up,
+		-- 				["<PageDown>"] = actions.preview_scrolling_down,
+		-- 				["<C-k>"] = actions.move_selection_previous, -- move to prev result
+		-- 				["<C-j>"] = actions.move_selection_next, -- move to next result
+		-- 			},
+		-- 		},
+		-- 	},
+		-- }
 
+		telescope.setup(opts)
 		telescope.load_extension("fzf")
-
-		-- set keymaps
-		local keymap = vim.keymap -- for conciseness
-		local builtin = require("telescope.builtin")
-
-		keymap.set("n", "<leader>ff", builtin.find_files, { desc = "Fuzzy find files in cwd" })
-		keymap.set("n", "<leader>fr", builtin.oldfiles, { desc = "Fuzzy find recent files" })
-		keymap.set("n", "<leader>fs", builtin.live_grep, { desc = "Find string in cwd" })
-		keymap.set("n", "<leader>fc", builtin.grep_string, { desc = "Find string under cursor in cwd" })
-		keymap.set("n", "<C-p>", builtin.git_files, { desc = "Fuzzy find files in git project" })
-		keymap.set("n", "<C-b>", builtin.buffers, { desc = "Opened buffers" })
-		keymap.set("n", "<leader>fo", builtin.lsp_dynamic_workspace_symbols, { desc = "Find workspace symbols " })
+		-- telescope.load_extension("file_browser")
 	end,
 }
