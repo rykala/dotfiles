@@ -1,29 +1,3 @@
-# ZSH 
-ZSH_THEME="robbyrussell"
-plugins=(
-    brew
-    colored-man-pages
-    colorize
-    direnv
-    docker
-    docker-compose
-    git
-    kubectl
-    macos
-    httpie
-    volta
-    zsh-autosuggestions
-    zsh-syntax-highlighting
-)
-
-# dump OMZ files to cache
-export ZSH_COMPDUMP=$ZSH/cache/.zcompdump-$HOST
-export ZSH="/Users/rykala/.oh-my-zsh"
-source $ZSH/oh-my-zsh.sh
-
-# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
-#[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
-
 # Set up fzf key bindings and fuzzy completion
 source <(fzf --zsh)
 
@@ -38,17 +12,17 @@ alias pn=pnpm
 alias zshconfig="vim ~/.zshrc"
 
 ## k8s
+autoload -U compinit && compinit
 source <(kubectl completion zsh)
 alias kctx="kubectx"
 alias kns="kubens"
-autoload -U compinit && compinit
 
 # VIM
 alias vim=nvim
 
 # Kubectl
 alias k=kubectl
-complete -F __start_kubectl k
+compdef k=kubectl
 
 # Docker
 source /Users/rykala/.docker/init-zsh.sh || true # Added by Docker Desktop
@@ -94,6 +68,10 @@ eval "$(zoxide init --cmd cd zsh)"
 export STARSHIP_CONFIG="$HOME/.starship.toml"
 eval "$(starship init zsh)"
 
+# Zsh plugins
+source /opt/homebrew/share/zsh-autosuggestions/zsh-autosuggestions.zsh
+source /opt/homebrew/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+
 # pnpm
 export PNPM_HOME="/Users/rykala/Library/pnpm"
 case ":$PATH:" in
@@ -101,3 +79,7 @@ case ":$PATH:" in
   *) export PATH="$PNPM_HOME:$PATH" ;;
 esac
 # pnpm end
+
+# Added by Antigravity
+export PATH="/Users/rykala/.antigravity/antigravity/bin:$PATH"
+export PATH="$HOME/.local/bin:$PATH"

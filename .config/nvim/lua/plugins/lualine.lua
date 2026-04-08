@@ -1,14 +1,3 @@
--- stylua: ignore
-local colors = {
-  blue   = '#80a0ff',
-  cyan   = '#79dac8',
-  black  = '#080808',
-  white  = '#c6c6c6',
-  red    = '#ff5189',
-  violet = '#d183e8',
-  grey   = '#303030',
-}
-
 return {
 	"nvim-lualine/lualine.nvim",
 	dependencies = { "nvim-tree/nvim-web-devicons" },
@@ -18,36 +7,37 @@ return {
 			globalstatus = true,
 			component_separators = "",
 			section_separators = { left = "", right = "" },
+			icons_enabled = true,
 		},
 		sections = {
-			lualine_a = { { "mode", separator = { left = "" }, right_padding = 2 } },
-			lualine_b = { "filename" },
+			lualine_a = {},
+			lualine_b = { "branch", "diff", "filename" },
 			lualine_c = {
 				"%=", --[[ add your center components here in place of this comment ]]
 				{
 					"diagnostics",
 					sources = { "nvim_diagnostic" },
-					symbols = { error = " ", warn = " ", info = " " },
-					diagnostics_color = {
-						error = { fg = colors.red },
-						warn = { fg = colors.yellow },
-						info = { fg = colors.cyan },
+					sections = { "error", "warn", "info", "hint" },
+					symbols = { error = " ", warn = " ", info = " ", hint = "H" },
+					{
+						error = "DiagnosticError",
+						warn = "DiagnosticWarn",
+						info = "DiagnosticInfo",
+						hint = "DiagnosticHint",
 					},
 				},
 			},
 			lualine_x = {},
-			lualine_y = { "filetype", { "location", right_padding = 2 } },
-			lualine_z = {
-				{ "branch", separator = { right = "" } },
-			},
+			lualine_y = { "lsp_status", "filetype", "location", "mode" },
+			lualine_z = {},
 		},
 		inactive_sections = {
-			lualine_a = { "filename" },
+			lualine_a = {},
 			lualine_b = {},
 			lualine_c = {},
 			lualine_x = {},
 			lualine_y = {},
-			lualine_z = { "branch" },
+			lualine_z = {},
 		},
 		tabline = {},
 		extensions = {},

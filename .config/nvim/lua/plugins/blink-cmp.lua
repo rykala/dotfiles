@@ -4,8 +4,14 @@ return {
 	---@type blink.cmp.Config
 	opts = {
 		completion = {
+			menu = {
+				auto_show = false,
+			},
+			ghost_text = {
+				enabled = false,
+			},
 			list = {
-				selection = "auto_insert",
+				selection = { preselect = true, auto_insert = true },
 			},
 			documentation = {
 				auto_show = true,

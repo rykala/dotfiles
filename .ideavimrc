@@ -70,11 +70,18 @@ map <leader>z <Action>(ToggleDistractionFreeMode)
 map <leader>ef <Action>(SelectInProjectView)
 map <leader>tb <Action>(Annotate)
 map <leader>th <Action>(Vcs.ShowTabbedFileHistory)
-map <leader>hr <Action>(Vcs.Rollback)
+map <leader>hr <Action>(Vcs.RollbackChangedLines)
 map ]d <Action>(GotoNextError)
 map [d <Action>(GotoPreviousError)
 nmap ]c <Action>(VcsShowNextChangeMarker)
 nmap [c <Action>(VcsShowPrevChangeMarker)
+nmap ]f <Action>(MethodDown)
+nmap [f <Action>(MethodUp)
+
+nmap ]] <Action>(NextHighlightedUsage)
+nmap ]] <Action>(PrevHighlightedUsage)
+
+nmap <leader>space <Action>(EditorSelectWord)
 
 map <leader>b <Action>(ToggleLineBreakpoint)
 map <leader>o <Action>(FileStructurePopup)
@@ -89,9 +96,6 @@ map <leader>i ~hi
 " Remove selection and toggle case. E.g. `v2l<leader>u`: `getProperty` -> `property`
 vmap <leader>u d~h
 
-" I think it's a better solution
-map U <C-R>
-
 """ Which-key ------------------------------
 set which-key
 
@@ -104,7 +108,7 @@ nmap <leader>5 <action>(HarpoonerOpenFile3)
 nmap <leader>6 <action>(HarpoonerOpenFile3)
 
 nmap <C-e> <action>(HarpoonerQuickMenu)
-nmap <leader>a <action>(HarpoonerAddFile)
+nmap <leader>a <action>(HarpoonerToggleFile)
 
 nmap <leader>hn <action>(HarpoonerNextFileAction)
 nmap <leader>hp <action>(HarpoonerPreviousFileAction)

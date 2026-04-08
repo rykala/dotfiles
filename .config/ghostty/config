@@ -1,3 +1,9 @@
-theme = catppuccin-frappe
+adjust-cell-height = 35%
+background-blur-radius = 20
+background-opacity = 0.9
 font-family = JetBrains Mono
 macos-titlebar-style = hidden
+theme = Catppuccin Mocha
+window-colorspace = display-p3
+window-padding-balance = true
+macos-option-as-alt = left
