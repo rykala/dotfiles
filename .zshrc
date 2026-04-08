@@ -61,9 +61,6 @@ fi
 alias lt='ls -T'
 alias tree=lt
 
-# Zoxide
-eval "$(zoxide init --cmd cd zsh)"
-
 # Starship
 export STARSHIP_CONFIG="$HOME/.starship.toml"
 eval "$(starship init zsh)"
@@ -83,3 +80,6 @@ esac
 # Added by Antigravity
 export PATH="/Users/rykala/.antigravity/antigravity/bin:$PATH"
 export PATH="$HOME/.local/bin:$PATH"
+
+# Zoxide (must be last)
+eval "$(zoxide init --cmd cd zsh)"
