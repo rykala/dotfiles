@@ -11,6 +11,8 @@ alias rm=trash
 alias pn=pnpm
 alias zshconfig="vim ~/.zshrc"
 
+alias cl="CLAUDE_CODE_NO_FLICKER=1 claude"
+
 ## k8s
 autoload -U compinit && compinit
 source <(kubectl completion zsh)
