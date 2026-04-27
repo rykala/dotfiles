@@ -9,6 +9,7 @@ alias rm=trash
 
 # Custom aliases
 alias pn=pnpm
+alias ghw="gh repo view -w"
 alias zshconfig="vim ~/.zshrc"
 
 alias cl="CLAUDE_CODE_NO_FLICKER=1 claude"
