@@ -162,7 +162,8 @@
     "ralph-loop@claude-plugins-official": true,
     "typescript-lsp@claude-plugins-official": true,
     "claude-md-management@claude-plugins-official": true,
-    "warp@claude-code-warp": true
+    "warp@claude-code-warp": true,
+    "expo@claude-plugins-official": true
   },
   "extraKnownMarketplaces": {
     "claude-code-warp": {
@@ -170,12 +171,19 @@
         "source": "github",
         "repo": "warpdotdev/claude-code-warp"
       }
+    },
+    "ui-ux-pro-max-skill": {
+      "source": {
+        "source": "github",
+        "repo": "nextlevelbuilder/ui-ux-pro-max-skill"
+      }
     }
   },
   "alwaysThinkingEnabled": true,
   "effortLevel": "high",
   "autoMemoryEnabled": true,
   "autoDreamEnabled": true,
-  "voiceEnabled": true,
-  "skipAutoPermissionPrompt": true
+  "editorMode": "vim",
+  "skipAutoPermissionPrompt": true,
+  "voiceEnabled": true
 }
