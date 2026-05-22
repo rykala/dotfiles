@@ -11,7 +11,9 @@
       "Bash(git config*)",
       "Bash(git -C * config*)",
       "Bash(gh pr list*)",
-      "Bash(${CLAUDE_PLUGIN_ROOT}/scripts/setup-ralph-loop.sh:*)"
+      "Bash(${CLAUDE_PLUGIN_ROOT}/scripts/setup-ralph-loop.sh:*)",
+      "Edit(//Users/rykala/dotfiles/**)",
+      "Write(//Users/rykala/dotfiles/**)"
     ],
     "defaultMode": "auto"
   },
