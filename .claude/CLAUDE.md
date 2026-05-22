@@ -1,1 +1,5 @@
 - YAGNI
+- Do not add comments explaining what the code does.
+- Only add comments for complex algorithmic logic or API contracts.
+- Code should be self-documenting.
+- dont use AskUserQuestion tool
