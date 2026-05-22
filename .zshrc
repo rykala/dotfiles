@@ -38,8 +38,8 @@ compdef k=kubectl
 # Docker
 source /Users/rykala/.docker/init-zsh.sh || true # Added by Docker Desktop
 
-# Volta
-path+=("$HOME/.volta/bin")
+# Volta (prepend so it wins over /opt/homebrew/bin added by brew shellenv)
+path=("$HOME/.volta/bin" $path)
 
 # PSQL
 path+=("/opt/homebrew/opt/libpq/bin")
