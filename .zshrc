@@ -12,13 +12,13 @@ alias ghw="gh repo view -w"
 alias zshconfig="vim ~/.zshrc"
 
 # sfw (safe package manager wrapper)
-alias npm="sfw npm"
-alias npx="sfw npx"
-alias pnpm="sfw pnpm"
-alias pn="sfw pnpm"
-alias pnpx="sfw pnpx"
-alias yarn="sfw yarn"
-alias bun="sfw bun"
+# alias npm="sfw npm"
+# alias npx="sfw npx"
+# alias pnpm="sfw pnpm"
+# alias pn="sfw pnpm"
+# alias pnpx="sfw pnpx"
+# alias yarn="sfw yarn"
+# alias bun="sfw bun"
 
 alias cl="CLAUDE_CODE_NO_FLICKER=1 claude"
 
