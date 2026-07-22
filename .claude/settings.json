@@ -29,16 +29,18 @@
   "enabledPlugins": {
     "code-review@claude-plugins-official": false,
     "code-simplifier@claude-plugins-official": true,
-    "frontend-design@claude-plugins-official": true,
-    "terraform@claude-plugins-official": true,
+    "frontend-design@claude-plugins-official": false,
+    "terraform@claude-plugins-official": false,
     "superpowers@claude-plugins-official": false,
     "ralph-loop@claude-plugins-official": false,
     "typescript-lsp@claude-plugins-official": true,
-    "claude-md-management@claude-plugins-official": true,
+    "claude-md-management@claude-plugins-official": false,
     "expo@claude-plugins-official": false,
     "supabase@claude-plugins-official": false,
     "warp@claude-code-warp": true,
-    "claude-code-setup@claude-plugins-official": true
+    "claude-code-setup@claude-plugins-official": false,
+    "mattpocock-skills@mattpocock": true,
+    "commit-commands@claude-plugins-official": true
   },
   "extraKnownMarketplaces": {
     "ui-ux-pro-max-skill": {
@@ -52,10 +54,16 @@
         "source": "github",
         "repo": "warpdotdev/claude-code-warp"
       }
+    },
+    "mattpocock": {
+      "source": {
+        "source": "github",
+        "repo": "mattpocock/skills"
+      }
     }
   },
   "alwaysThinkingEnabled": true,
-  "effortLevel": "medium",
+  "effortLevel": "xhigh",
   "askUserQuestionTimeout": "never",
   "tui": "default",
   "autoMemoryEnabled": true,
