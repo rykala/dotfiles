@@ -1,3 +1,4 @@
+onboarding = false
 # herdr configuration
 # Place this file at ~/.config/herdr/config.toml
 
@@ -127,6 +128,14 @@ command = "lazygit"
 width = "80%"
 height = "80%"
 
+[[keys.command]]
+key = "prefix+t"
+type = "popup"
+command = "exec \"${SHELL:-sh}\""
+description = "open scratch terminal"
+width = "80%"
+height = "80%"
+
 # Legacy indexed shortcut config is still parsed for compatibility.
 # Prefer switch_tab, switch_workspace, and focus_agent for new configs.
 # [keys.indexed]
@@ -236,6 +245,7 @@ height = "80%"
 # accent = "cyan"
 
 # Background notification popup delivery
+agent_panel_sort = "priority"
 [ui.toast]
 # off = disable pop-up notifications
 # herdr = show in-app toasts

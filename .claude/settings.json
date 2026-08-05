@@ -16,7 +16,21 @@
     ],
     "defaultMode": "auto"
   },
-  "model": "claude-fable-5[1m]",
+  "model": "opus[1m]",
+  "hooks": {
+    "SessionStart": [
+      {
+        "matcher": "*",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "bash '/Users/rykala/.claude/hooks/herdr-agent-state.sh' session",
+            "timeout": 10
+          }
+        ]
+      }
+    ]
+  },
   "worktree": {
     "baseRef": "fresh"
   },
@@ -27,28 +41,22 @@
     "refreshInterval": 10
   },
   "enabledPlugins": {
+    "claude-code-setup@claude-plugins-official": false,
+    "claude-md-management@claude-plugins-official": false,
     "code-review@claude-plugins-official": false,
     "code-simplifier@claude-plugins-official": true,
-    "frontend-design@claude-plugins-official": false,
-    "terraform@claude-plugins-official": false,
-    "superpowers@claude-plugins-official": false,
-    "ralph-loop@claude-plugins-official": false,
-    "typescript-lsp@claude-plugins-official": true,
-    "claude-md-management@claude-plugins-official": false,
+    "commit-commands@claude-plugins-official": true,
     "expo@claude-plugins-official": false,
-    "supabase@claude-plugins-official": false,
-    "warp@claude-code-warp": true,
-    "claude-code-setup@claude-plugins-official": false,
+    "frontend-design@claude-plugins-official": false,
     "mattpocock-skills@mattpocock": true,
-    "commit-commands@claude-plugins-official": true
+    "ralph-loop@claude-plugins-official": false,
+    "supabase@claude-plugins-official": false,
+    "superpowers@claude-plugins-official": false,
+    "terraform@claude-plugins-official": false,
+    "typescript-lsp@claude-plugins-official": true,
+    "warp@claude-code-warp": true
   },
   "extraKnownMarketplaces": {
-    "ui-ux-pro-max-skill": {
-      "source": {
-        "source": "github",
-        "repo": "nextlevelbuilder/ui-ux-pro-max-skill"
-      }
-    },
     "claude-code-warp": {
       "source": {
         "source": "github",
@@ -60,14 +68,25 @@
         "source": "github",
         "repo": "mattpocock/skills"
       }
+    },
+    "ui-ux-pro-max-skill": {
+      "source": {
+        "source": "github",
+        "repo": "nextlevelbuilder/ui-ux-pro-max-skill"
+      }
     }
   },
   "alwaysThinkingEnabled": true,
   "effortLevel": "xhigh",
   "askUserQuestionTimeout": "never",
   "tui": "default",
-  "autoMemoryEnabled": true,
+  "voice": {
+    "enabled": true,
+    "mode": "hold"
+  },
+  "autoMemoryEnabled": false,
   "autoDreamEnabled": true,
+  "skipWorkflowUsageWarning": true,
   "editorMode": "vim",
   "remoteControlAtStartup": false,
   "inputNeededNotifEnabled": true,

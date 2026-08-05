@@ -5,7 +5,7 @@ return {
 	opts = {
 		completion = {
 			menu = {
-				auto_show = false,
+				auto_show = true,
 			},
 			ghost_text = {
 				enabled = false,

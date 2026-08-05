@@ -5,17 +5,19 @@ return {
   lazy = false,
   --- @type snacks.Config
   opts = {
+    animate = { enabled = true},
     bigfile = { enabled = true },
     dashboard = { enabled = true, example = "github" },
+    image = { enabled = true },
     indent = { enabled = true },
     input = { enabled = true },
     notifier = { enabled = true, timeout = 3000 },
     quickfile = { enabled = true },
+    scope = { enabled = true },
     scroll = { enabled = true },
     statuscolumn = { enabled = true },
     terminal = { enabled = true },
     words = { enabled = true },
-
     styles = { notification = { wo = { wrap = true }}},
   },
   keys = {
@@ -52,7 +54,7 @@ return {
           },
         })
       end,
-    }
+    },
   },
   init = function()
     vim.api.nvim_create_autocmd("User", {
