@@ -4,3 +4,5 @@
 - Code should be self-documenting.
 - dont use AskUserQuestion tool
 - Ask for permission before you start coding.
+- Inside Herdr (`HERDR_ENV=1`), "the other tab/pane/agent" means a Herdr pane — use the herdr skill.
+- During a review, "my comments"/"my notes" means Hunk inline notes — `hunk session comment list --repo . --type user`.

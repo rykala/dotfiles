@@ -11,12 +11,23 @@
       "Bash(git config*)",
       "Bash(git -C * config*)",
       "Bash(gh pr list*)",
-      "Edit(//Users/rykala/dotfiles/**)",
-      "Write(//Users/rykala/dotfiles/**)"
+      "Bash(hunk session list*)",
+      "Bash(hunk session get*)",
+      "Bash(hunk session context*)",
+      "Bash(hunk session review*)",
+      "Bash(hunk session comment list*)",
+      "Bash(herdr workspace list*)",
+      "Bash(herdr tab list*)",
+      "Bash(herdr pane list*)",
+      "Bash(herdr pane read*)",
+      "Bash(herdr agent list*)",
+      "Bash(herdr agent get*)",
+      "Bash(herdr agent read*)"
     ],
     "defaultMode": "auto"
   },
-  "model": "opus[1m]",
+  "model": "claude-fable-5[1m]",
+  "disableClaudeAiConnectors": true,
   "hooks": {
     "SessionStart": [
       {
@@ -76,8 +87,14 @@
       }
     }
   },
+  "sandbox": {
+    "excludedCommands": [
+      "herdr *",
+      "hunk *"
+    ]
+  },
   "alwaysThinkingEnabled": true,
-  "effortLevel": "xhigh",
+  "effortLevel": "medium",
   "askUserQuestionTimeout": "never",
   "tui": "default",
   "voice": {
