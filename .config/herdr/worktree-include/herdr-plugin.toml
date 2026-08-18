@@ -1,0 +1,10 @@
+id = "local.worktree-include"
+name = "worktree-include"
+version = "0.1.0"
+min_herdr_version = "0.8.0"
+description = "Copy gitignored files matched by .worktreeinclude into new worktrees."
+platforms = ["macos"]
+
+[[events]]
+on = "worktree.created"
+command = ["sh", "-c", "exec \"$HERDR_PLUGIN_ROOT/copy-included.sh\""]

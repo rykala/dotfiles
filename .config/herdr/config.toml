@@ -125,8 +125,8 @@ prefix = "ctrl+space"
 key = "prefix+shift+g"
 type = "popup"
 command = "lazygit"
-width = "80%"
-height = "80%"
+width = "95%"
+height = "95%"
 
 [[keys.command]]
 key = "prefix+t"
@@ -143,8 +143,8 @@ height = "80%"
 # workspaces = "" # e.g. "ctrl+shift" makes ctrl+shift+1..9 switch workspaces directly
 # agents = ""     # e.g. "alt" makes alt+1..9 focus agent rows directly
 
-# [worktrees]
-# directory = "~/.herdr/worktrees"
+[worktrees]
+directory = "~/code/worktrees"
 
 [ui]
 # Sidebar width (auto-scaled based on workspace names, this sets the default)
@@ -245,7 +245,7 @@ height = "80%"
 # accent = "cyan"
 
 # Background notification popup delivery
-agent_panel_sort = "spaces"
+agent_panel_sort = "priority"
 [ui.toast]
 # off = disable pop-up notifications
 # herdr = show in-app toasts

@@ -1,0 +1,38 @@
+# Base lazygit config, shared by the terminal and Neovim.
+#
+# Neovim's Snacks.lazygit() sets LG_CONFIG_FILE to
+#   "<lazygit -cd>/config.yml,<nvim cache>/lazygit-theme.yml"
+# and lazygit merges those left to right, so anything set here is inherited by
+# the Neovim float unless snacks explicitly overrides it. Snacks overrides only
+# `gui.theme` (regenerated from the active colorscheme) and `os.editPreset`.
+#
+# Keep `editPreset: nvim` here: snacks swaps it for `nvim-remote`, which needs
+# $NVIM set and therefore only works inside a Neovim terminal.
+
+gui:
+  nerdFontsVersion: "3"
+  # Catppuccin Macchiato, matching what snacks derives from the nvim colorscheme.
+  theme:
+    activeBorderColor:
+      - "#f5a97f"
+      - bold
+    searchingActiveBorderColor:
+      - "#f5a97f"
+      - bold
+    inactiveBorderColor:
+      - "#8aadf4"
+    optionsTextColor:
+      - "#8aadf4"
+    defaultFgColor:
+      - "#cad3f5"
+    selectedLineBgColor:
+      - "#494d64"
+    unstagedChangesColor:
+      - "#ed8796"
+    cherryPickedCommitFgColor:
+      - "#8aadf4"
+    cherryPickedCommitBgColor:
+      - "#f0c6c6"
+
+os:
+  editPreset: nvim

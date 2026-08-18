@@ -1,6 +1,12 @@
 {
   "version": 1,
   "skills": {
+    "better-github-skill": {
+      "source": "AVGVSTVS96/better-github-skill",
+      "sourceType": "github",
+      "skillPath": "SKILL.md",
+      "computedHash": "e86d61ea99c93582db6a742c23d4941efd933c6f49740e5acca5963d71662cb0"
+    },
     "obsidian-markdown": {
       "source": "kepano/obsidian-skills",
       "sourceType": "github",
