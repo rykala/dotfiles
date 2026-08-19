@@ -11,6 +11,8 @@
 
 gui:
   nerdFontsVersion: "3"
+  showNumstatInFilesView: true
+  showDivergenceFromBaseBranch: arrowAndNumber
   # Catppuccin Macchiato, matching what snacks derives from the nvim colorscheme.
   theme:
     activeBorderColor:
@@ -33,6 +35,26 @@ gui:
       - "#8aadf4"
     cherryPickedCommitBgColor:
       - "#f0c6c6"
+
+# Requires lazygit >= 0.64: this key was `git.pagers` (with `pager:`) up to 0.63
+# and `git.paging` before that. Older versions silently rewrite this file to the
+# schema they understand, so pin the Homebrew version if you sync this elsewhere.
+# Cycle renderers with `|`, or `\` to go backwards.
+git:
+  diffRenderers:
+    # syntax-theme is set here rather than in ~/.gitconfig so terminal git keeps
+    # its own theme; the plus/minus styles there still apply to both.
+    - command: 'delta --dark --paging=never --line-numbers --syntax-theme="Catppuccin Macchiato" --hyperlinks --hyperlinks-file-link-format="lazygit-edit://{path}:{line}"'
+    - name: side-by-side
+      command: 'delta --dark --paging=never --side-by-side --syntax-theme="Catppuccin Macchiato"'
+    - type: rawGit
+      name: word-diff
+      args: ["--color-words"]
+
+# Homebrew owns this binary. The built-in updater overwrites brew's symlink with
+# a plain binary, which then shadows every later `brew upgrade` silently.
+update:
+  method: never
 
 os:
   editPreset: nvim
